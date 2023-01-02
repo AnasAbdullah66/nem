@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Ninth_Mid_Evid.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Client Booking List</h1>
+
+<p class="d-flex justify-content-end">
+    <a asp-action="Create" class="btn btn-secondary">Create New</a>
+</p>
+@foreach (var item in Model)
+{
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div>
+                <img src="@item.Picture" width="42" class="mr-2" />
+                Name: @item.ClientName
+
+            </div>
+            <div>
+
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-controller="Clients" asp-route-id="@item.ClientId">Edit</a>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Clients" asp-route-id="@item.ClientId">Delete</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>SpotId</th>
+                        <th>SpotName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var singleEntry in item.BookingEntrys)
+                    {
+                        <tr>
+                            <td>@singleEntry.SpotId</td>
+                            <td>@singleEntry.Spot.SpotName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,73 @@
+﻿@model Ninth_Mid_Evid.Models.ViewModel.ClientVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="bg-primary font-weight-bold text-center">Client Details</h4>
+<hr />
+
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div class="row">
+        <div class="col-6">
+            <h4>Client Info</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientName" class="control-label"></label>
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MaritalStatus" /> @Html.DisplayNameFor(model => model.MaritalStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PicFile" class="control-label"></label>
+                <input asp-for="PicFile" class="form-control" />
+                <span asp-validation-for="PicFile" class="text-danger"></span>
+            </div>
+            
+        </div>
+        <div class="col-6">
+            <h4>Spot</h4>
+            <hr />
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-dark text-warning" id="btnAdd">Add</a>
+            </div>
+            <div id="spotContainer">
+                <script>
+                    LoadSpot();
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+</form>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}*@
